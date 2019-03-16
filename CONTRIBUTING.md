@@ -1,9 +1,3 @@
-<div class="highlight">
-
-shell
-
-</div>
-
 # Contributing
 
 Contributions are welcome, and they are greatly appreciated\! Every
