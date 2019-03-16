@@ -26,8 +26,8 @@ def test_generate_request(client):
 
 def test_multiple_client_request_calls(client, base_url):
     assert client.request.people(query={'foo': 'bar'}).url == \
-        f'{base_url}people/?foo=bar'
+        '{}people/?foo=bar'.format(base_url)
     assert client.request.people(query={'foo': 'bar'}).url == \
-        f'{base_url}people/?foo=bar'
+        '{}people/?foo=bar'.format(base_url)
     assert client.request.people(query={'foo': 'bar'}).url == \
-        f'{base_url}people/?foo=bar'
+        '{}people/?foo=bar'.format(base_url)
