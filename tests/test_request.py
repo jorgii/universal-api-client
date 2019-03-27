@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 import pytest
 
 from universal_api_client.request import APIRequest
@@ -42,19 +44,61 @@ def test_url_multi_path_with_many_requests(request_instance, base_url):
         '{}people/57812/are/so/many/'.format(base_url)
 
 
-def test_url_single_with_query(request_instance, base_url):
-    assert request_instance.people(query={'foo': 'bar'}).url == \
-        '{}people/?foo=bar'.format(base_url)
+@patch('universal_api_client.request.requests')
+def test_get(mocked_requests, request_instance):
+    params = {'foo': 'bar'}
+    request_instance.get(params=params)
+    mocked_requests.get.assert_called_once_with(
+        url=request_instance.url,
+        params=params)
 
 
-def test_url_multi_path_with_query_and_identifier(request_instance, base_url):
-    assert request_instance.people(
-        identifier=123).chances(query={'foo': 'bar'}).url == \
-            '{}people/123/chances/?foo=bar'.format(base_url)
+@patch('universal_api_client.request.requests')
+def test_head(mocked_requests, request_instance):
+    params = {'foo': 'bar'}
+    request_instance.head(params=params)
+    mocked_requests.head.assert_called_once_with(
+        url=request_instance.url,
+        params=params)
 
 
-def test_url_multi_path_with_mixed_query_and_identifier(request_instance,
-                                                        base_url):
-    assert request_instance.people(
-        identifier=123, query={'foo': 'bar'}).chances.url == \
-            '{}people/123/chances/?foo=bar'.format(base_url)
+@patch('universal_api_client.request.requests')
+def test_post(mocked_requests, request_instance):
+    params = {'foo': 'bar'}
+    data = {'one': 'two'}
+    request_instance.post(data=data, params=params)
+    mocked_requests.post.assert_called_once_with(
+        url=request_instance.url,
+        data=data,
+        params=params)
+
+
+@patch('universal_api_client.request.requests')
+def test_put(mocked_requests, request_instance):
+    params = {'foo': 'bar'}
+    data = {'one': 'two'}
+    request_instance.put(data=data, params=params)
+    mocked_requests.put.assert_called_once_with(
+        url=request_instance.url,
+        data=data,
+        params=params)
+
+
+@patch('universal_api_client.request.requests')
+def test_patch(mocked_requests, request_instance):
+    params = {'foo': 'bar'}
+    data = {'one': 'two'}
+    request_instance.patch(data=data, params=params)
+    mocked_requests.patch.assert_called_once_with(
+        url=request_instance.url,
+        data=data,
+        params=params)
+
+
+@patch('universal_api_client.request.requests')
+def test_delete(mocked_requests, request_instance):
+    params = {'foo': 'bar'}
+    request_instance.delete(params=params)
+    mocked_requests.delete.assert_called_once_with(
+        url=request_instance.url,
+        params=params)
