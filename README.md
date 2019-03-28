@@ -1,15 +1,43 @@
-# universal-api-client
+# Universal REST API Client
 
 [![Build Status](https://travis-ci.org/jorgii/universal-api-client.svg?branch=master)](https://travis-ci.org/jorgii/universal-api-client)
-
-Universal REST API client.
 
   - Free software: MIT license
   - Documentation: <https://universal-api-client.readthedocs.io>.
 
 ## Features
 
-  - TODO
+This library is a small REST API client with the following features:
+* Url builder - allows you to build a url by natively calling the client's attributes
+* HTTP requests - a thin wrapper around the requests library that allows full control of the HTTP requests.
+
+## Installation
+
+Not yet up for installation. Coming soon.
+
+## Usage
+
+### Initialising the client
+```python
+from universal_api_client import Client
+swapi_client = Client(base_url='https://swapi.co/api/')
+```
+
+### Building a URL
+The url builder is part of the `request` (`APIRequest`) attribute of the client.
+```python
+swapi_client.request.people # <universal_api_client.request.APIRequest at 0x1093c3eb8>
+swapi_client.request.people.url # 'https://swapi.co/api/people/'
+swapi_client.request.people(identifier=1).url # 'https://swapi.co/api/people/1/'
+swapi_client.request.people(identifier='1').url # 'https://swapi.co/api/people/1/'
+```
+
+### Making a request
+The requests are made by the already built `APIRequest` object. The method call returns the appropriate method call from the requests library.
+```python
+response = swapi_client.request.people(identifier='1').get() # <Response [200]>
+print(response.status_code) # 200
+```
 
 ## Credits
 
