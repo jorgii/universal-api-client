@@ -8,7 +8,21 @@ python:
   - 3.4
 
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -r requirements_dev.txt -r requirements.txt
+install: pip install -U tox-travis
 
 # Command to run tests, e.g. python setup.py test
-script: pytest
+script: tox
+
+deploy:
+  branches:
+    only:
+    - master
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: ggoranov
+  password:
+    secure: PLEASE_REPLACE_ME
+  on:
+    tags: true
+    repo: ggoranov/universal_api_client
+    python: 3.7

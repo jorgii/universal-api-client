@@ -1,5 +1,5 @@
 Welcome to Universal API Client's documentation!
-======================================
+================================================
 
 .. toctree::
    :maxdepth: 2
@@ -11,7 +11,6 @@ Welcome to Universal API Client's documentation!
    modules
    contributing
    authors
-   history
 
 Indices and tables
 ==================
