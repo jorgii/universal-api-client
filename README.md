@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/jorgii/universal-api-client.svg?branch=master)](https://travis-ci.org/jorgii/universal-api-client)
 
   - Free software: MIT license
-  - Documentation: <https://universal-api-client.readthedocs.io>.
+  - Documentation: Coming soon.
 
 ## Features
 
@@ -13,7 +13,9 @@ This library is a small REST API client with the following features:
 
 ## Installation
 
-Not yet up for installation. Coming soon.
+```
+pip install universal-api-client
+```
 
 ## Usage
 
