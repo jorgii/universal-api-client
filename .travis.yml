@@ -14,15 +14,11 @@ install: pip install -U tox-travis
 script: tox
 
 deploy:
-  branches:
-    only:
-    - master
   provider: pypi
   distributions: sdist bdist_wheel
   user: ggoranov
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: $PYPI_PASSWORD
   on:
     tags: true
-    repo: ggoranov/universal_api_client
     python: 3.7
