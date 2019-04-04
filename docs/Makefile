@@ -3,7 +3,7 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    = -e -M -H Reference
-SPHINXBUILD   = python -msphinx
+SPHINXBUILD   = sphinx-apidoc
 SPHINXPROJ    = universal_api_client
 SOURCEDIR     = .
 BUILDDIR      = _build
