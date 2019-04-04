@@ -4,7 +4,7 @@ Universal REST API Client
 |Build Status|
 
 -  Free software: MIT license
--  Documentation: Coming soon.
+-  Documentation: https://universal-api-client.readthedocs.io/en/latest/.
 
 Features
 --------
