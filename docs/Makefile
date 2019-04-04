@@ -2,8 +2,8 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS    = -e -M -H Reference
-SPHINXBUILD   = sphinx-apidoc
+SPHINXOPTS    =
+SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = universal_api_client
 SOURCEDIR     = .
 BUILDDIR      = _build
