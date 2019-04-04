@@ -4,6 +4,10 @@ import requests
 
 
 class APIRequest(object):
+    '''URL builder and a thin wrapper around the requests library.
+
+        :param url: Url for the request.
+    '''
     def __init__(self, url):
         self.url = url
 
@@ -25,7 +29,7 @@ class APIRequest(object):
     def get(self, **kwargs):
         '''Sends a GET request. Returns :class:`Response` object.
 
-        :param **kwargs: Optional arguments that ``request`` takes.
+        :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
         return requests.get(url=self.url, **kwargs)
@@ -33,7 +37,7 @@ class APIRequest(object):
     def head(self, **kwargs):
         '''Sends a HEAD request. Returns :class:`Response` object.
 
-        :param **kwargs: Optional arguments that ``request`` takes.
+        :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
         return requests.head(url=self.url, **kwargs)
@@ -43,7 +47,7 @@ class APIRequest(object):
 
         :param data: (optional) Dictionary, bytes, or file-like object
             to send in the body of the :class:`Request`.
-        :param **kwargs: Optional arguments that ``request`` takes.
+        :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
         return requests.post(url=self.url, data=data, **kwargs)
@@ -53,7 +57,7 @@ class APIRequest(object):
 
         :param data: (optional) Dictionary, bytes, or file-like object
             to send in the body of the :class:`Request`.
-        :param **kwargs: Optional arguments that ``request`` takes.
+        :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
         return requests.put(url=self.url, data=data, **kwargs)
@@ -63,7 +67,7 @@ class APIRequest(object):
 
         :param data: (optional) Dictionary, bytes, or file-like object
             to send in the body of the :class:`Request`.
-        :param **kwargs: Optional arguments that ``request`` takes.
+        :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
         return requests.patch(url=self.url, data=data, **kwargs)
@@ -71,15 +75,15 @@ class APIRequest(object):
     def delete(self, **kwargs):
         '''Sends a DELETE request. Returns :class:`Response` object.
 
-        :param **kwargs: Optional arguments that ``request`` takes.
+        :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
         return requests.delete(url=self.url, **kwargs)
 
     def options(self, **kwargs):
-        '''    Sends a OPTIONS request. Returns :class:`Response` object.
+        '''Sends a OPTIONS request. Returns :class:`Response` object.
 
-        :param **kwargs: Optional arguments that ``request`` takes.
+        :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
         return requests.options(url=self.url, **kwargs)

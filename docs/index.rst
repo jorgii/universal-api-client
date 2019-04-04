@@ -7,7 +7,6 @@ Welcome to Universal API Client's documentation!
 
    readme
    installation
-   usage
    modules
    contributing
    authors

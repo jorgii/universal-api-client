@@ -1,5 +1,5 @@
-universal_api_client
-====================
+Reference
+=========
 
 .. toctree::
    :maxdepth: 4
