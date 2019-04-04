@@ -7,7 +7,7 @@ __version__ = '0.1.0'
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 # get the dependencies and installs
@@ -23,7 +23,7 @@ setup(
     description=('А library for a REST API client that works with any API that'
                  ' follows somewhat the REST standard.'),
     long_description=long_description,
-    long_description_content_type='text/markdown',
+    long_description_content_type='text/x-rst',
     url='https://github.com/jorgii/universal-api-client',
     license='MIT',
     classifiers=[

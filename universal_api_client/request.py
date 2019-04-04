@@ -4,6 +4,10 @@ import requests
 
 
 class APIRequest(object):
+    '''URL builder and a thin wrapper around the requests library.
+
+        :param url: Url for the request.
+    '''
     def __init__(self, url):
         self.url = url
 
@@ -77,7 +81,7 @@ class APIRequest(object):
         return requests.delete(url=self.url, **kwargs)
 
     def options(self, **kwargs):
-        '''    Sends a OPTIONS request. Returns :class:`Response` object.
+        '''Sends a OPTIONS request. Returns :class:`Response` object.
 
         :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
