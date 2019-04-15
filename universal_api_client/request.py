@@ -7,9 +7,11 @@ class APIRequest(object):
     '''URL builder and a thin wrapper around the requests library.
 
         :param url: Url for the request.
+        :param auth: Authentication from the `requests.auth` packege.
     '''
-    def __init__(self, url):
+    def __init__(self, url, auth=None):
         self.url = url
+        self.auth = auth
 
     def __getattr__(self, name):
         updated_url = self._update_url(self.url, name)
@@ -26,12 +28,16 @@ class APIRequest(object):
             url_parts[2] = parse.urljoin(url_parts[2], str(identifier)) + '/'
         return parse.urlunparse(url_parts)
 
+    def _update_kwargs(self, kwargs):
+        if 'auth' not in kwargs and self.auth:
+            kwargs['auth'] = self.auth
+        return kwargs
+
     def get(self, **kwargs):
         '''Sends a GET request. Returns :class:`Response` object.
 
         :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
-
         return requests.get(url=self.url, **kwargs)
 
     def head(self, **kwargs):
@@ -40,6 +46,7 @@ class APIRequest(object):
         :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
+        kwargs = self._update_kwargs(kwargs)
         return requests.head(url=self.url, **kwargs)
 
     def post(self, data=None, **kwargs):
@@ -50,6 +57,7 @@ class APIRequest(object):
         :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
+        kwargs = self._update_kwargs(kwargs)
         return requests.post(url=self.url, data=data, **kwargs)
 
     def put(self, data=None, **kwargs):
@@ -60,6 +68,7 @@ class APIRequest(object):
         :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
+        kwargs = self._update_kwargs(kwargs)
         return requests.put(url=self.url, data=data, **kwargs)
 
     def patch(self, data=None, **kwargs):
@@ -70,6 +79,7 @@ class APIRequest(object):
         :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
+        kwargs = self._update_kwargs(kwargs)
         return requests.patch(url=self.url, data=data, **kwargs)
 
     def delete(self, **kwargs):
@@ -78,6 +88,7 @@ class APIRequest(object):
         :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
+        kwargs = self._update_kwargs(kwargs)
         return requests.delete(url=self.url, **kwargs)
 
     def options(self, **kwargs):
@@ -86,4 +97,5 @@ class APIRequest(object):
         :param \*\*kwargs: Optional arguments that ``request`` takes.
         '''
 
+        kwargs = self._update_kwargs(kwargs)
         return requests.options(url=self.url, **kwargs)
