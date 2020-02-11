@@ -5,20 +5,9 @@ python:
   - 3.8
   - 3.7
   - 3.6
-  - 3.5
 
-# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox-travis
-
-# Command to run tests, e.g. python setup.py test
-script: tox
-
-deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: ggoranov
-  password:
-    secure: $PYPI_PASSWORD
-  on:
-    tags: true
-    python: 3.8
+jobs:
+  include:
+    - stage: "Tests"
+      name: "Unit Tests"
+      script: pytest
