@@ -5,7 +5,7 @@ class Client(object):
     '''API client capable of generating requests
 
         :param base_url: Base url for the client.
-        :param auth: Authentication from the `requests.auth` packege.
+        :param auth: Authentication from the `requests.auth` package.
     '''
     def __init__(self, base_url, auth=None):
         self.base_url = base_url
