@@ -54,10 +54,7 @@ lint: ## check style with flake8
 	flake8 universal_api_client tests
 
 test: ## run tests quickly with the default Python
-	python setup.py test
-
-test-all: ## run tests on every Python version with tox
-	tox
+	pytest
 
 coverage: ## check code coverage quickly with the default Python
 	coverage run --source universal_api_client setup.py test
@@ -65,19 +62,14 @@ coverage: ## check code coverage quickly with the default Python
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
-docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/universal_api_client.*
-	rm -f docs/modules.rst
-	sphinx-apidoc -e -M -H Reference -o docs/ universal_api_client
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
-	$(BROWSER) docs/_build/html/index.html
+docs: ## generate docs
+	mkdocs build
 
 servedocs: docs ## compile the docs watching for changes
-	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
+	mkdocs serve
 
-release: dist ## package and upload a release
-	twine upload dist/*
+releasedocs: dist ## package and upload docs
+	twine upload site/*
 
 dist: clean ## builds source and wheel package
 	python setup.py sdist
