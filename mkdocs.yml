@@ -3,7 +3,7 @@ site_description: The ultimate REST API client.
 site_url: https://universal-api-client.readthedocs.io/en/latest/
 
 theme:
-    name: 'material'
+    name: readthedocs
 
 repo_name: jorgii/universal-api-client
 repo_url: https://github.com/jorgii/universal-api-client

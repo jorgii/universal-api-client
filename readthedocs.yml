@@ -13,8 +13,4 @@ mkdocs:
 python:
   version: 3.7
   install:
-    - method: pip
-      path: .
-      extra_requirements:
-        - mkdocs-material
-        - mkautodoc
+    - requirements: requirements_dev.txt

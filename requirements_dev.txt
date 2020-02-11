@@ -2,12 +2,10 @@ pip
 bumpversion
 wheel
 flake8
-tox
 coverage
 twine
 ipdb
 pytest
-pytest-runner
 mkdocs
 mkdocs-material
 mkautodoc
