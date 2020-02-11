@@ -8,3 +8,13 @@ version: 2
 # Build documentation with MkDocs
 mkdocs:
   configuration: mkdocs.yml
+
+# Optionally set the version of Python and requirements required to build your docs
+python:
+  version: 3.8
+  install:
+    - method: pip
+        path: .
+        extra_requirements:
+          - mkdocs-material
+          - mkautodoc
