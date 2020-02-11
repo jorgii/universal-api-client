@@ -1,5 +1,3 @@
-# API Reference
-
 ## Client
 
 ::: universal_api_client.client.Client
