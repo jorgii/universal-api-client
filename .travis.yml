@@ -23,8 +23,8 @@ deploy:
   user: $PYPI_USER
   password:
     secure: $PYPI_PASSWORD
-  on:
-    tags: true
+  # on:
+  #   tags: true
 
 jobs:
   include:
