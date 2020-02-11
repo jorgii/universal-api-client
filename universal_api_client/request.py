@@ -42,7 +42,7 @@ class APIRequest(object):
 
         **Parameters**
 
-        * **\*\*kwargs** - (optional) Optional arguments that `request`
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
         takes.
         """
         return requests.get(url=self.url, **kwargs)
@@ -53,7 +53,8 @@ class APIRequest(object):
 
         **Parameters**
 
-        * **\*\*kwargs** - (optional) Optional arguments that `request` takes.
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
         """
 
         kwargs = self._update_kwargs(kwargs)
@@ -67,7 +68,8 @@ class APIRequest(object):
 
         * **data** - (optional) Dictionary, bytes, or file-like object
         to send in the body of the `Request`.
-        * **\*\*kwargs** - (optional) Optional arguments that `request` takes.
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
         """
 
         kwargs = self._update_kwargs(kwargs)
@@ -81,7 +83,8 @@ class APIRequest(object):
 
         * **data** - (optional) Dictionary, bytes, or file-like object
         to send in the body of the `Request`.
-        * **\*\*kwargs** - (optional) Optional arguments that `request` takes.
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
         """
 
         kwargs = self._update_kwargs(kwargs)
@@ -95,7 +98,8 @@ class APIRequest(object):
 
         * **data** - (optional) Dictionary, bytes, or file-like object
         to send in the body of the `Request`.
-        * **\*\*kwargs** - (optional) Optional arguments that `request` takes.
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
         """
 
         kwargs = self._update_kwargs(kwargs)
@@ -107,7 +111,8 @@ class APIRequest(object):
 
         **Parameters**
 
-        * **\*\*kwargs** - (optional) Optional arguments that `request` takes.
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
         """
 
         kwargs = self._update_kwargs(kwargs)
@@ -119,7 +124,8 @@ class APIRequest(object):
 
         **Parameters**
 
-        * **\*\*kwargs** - (optional) Optional arguments that `request` takes.
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
         """
 
         kwargs = self._update_kwargs(kwargs)
