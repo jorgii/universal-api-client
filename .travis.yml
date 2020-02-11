@@ -6,6 +6,11 @@ python:
   - 3.7
   - 3.6
 
+stages:
+  - check
+  - test
+  - deploy
+
 install:
   - pip install -r requirements.txt -r requirements_dev.txt
 
@@ -18,3 +23,12 @@ jobs:
       name: Check with flake8
       script: flake8
       python: 3.8
+    - stage: deploy
+      provider: pypi
+      distributions: sdist bdist_wheel
+      name: Deploy to pypi.org
+      user: $PYPI_USER
+      password:
+        secure: $PYPI_PASSWORD
+      # on:
+      #   tags: true
