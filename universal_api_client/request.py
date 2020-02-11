@@ -4,11 +4,14 @@ import requests
 
 
 class APIRequest(object):
-    '''URL builder and a thin wrapper around the requests library.
+    """
+    URL builder and a thin wrapper around the requests library.
 
-        :param url: Url for the request.
-        :param auth: Authentication from the `requests.auth` packege.
-    '''
+    **Parameters**
+
+    * **url** - Url for the request.
+    * **auth** - (optional) Authentication from the `requests.auth` package.
+    """
     def __init__(self, url, auth=None):
         self.url = url
         self.auth = auth
@@ -34,68 +37,96 @@ class APIRequest(object):
         return kwargs
 
     def get(self, **kwargs):
-        '''Sends a GET request. Returns :class:`Response` object.
+        """
+        Sends a GET request. Returns `Response` object.
 
-        :param \*\*kwargs: Optional arguments that ``request`` takes.
-        '''
+        **Parameters**
+
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
+        """
         return requests.get(url=self.url, **kwargs)
 
     def head(self, **kwargs):
-        '''Sends a HEAD request. Returns :class:`Response` object.
+        """
+        Sends a HEAD request. Returns `Response` object.
 
-        :param \*\*kwargs: Optional arguments that ``request`` takes.
-        '''
+        **Parameters**
+
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
+        """
 
         kwargs = self._update_kwargs(kwargs)
         return requests.head(url=self.url, **kwargs)
 
     def post(self, data=None, **kwargs):
-        '''Sends a POST request. Returns :class:`Response` object.
+        """
+        Sends a POST request. Returns `Response` object.
 
-        :param data: (optional) Dictionary, bytes, or file-like object
-            to send in the body of the :class:`Request`.
-        :param \*\*kwargs: Optional arguments that ``request`` takes.
-        '''
+        **Parameters**
+
+        * **data** - (optional) Dictionary, bytes, or file-like object
+        to send in the body of the `Request`.
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
+        """
 
         kwargs = self._update_kwargs(kwargs)
         return requests.post(url=self.url, data=data, **kwargs)
 
     def put(self, data=None, **kwargs):
-        '''Sends a PUT request. Returns :class:`Response` object.
+        """
+        Sends a PUT request. Returns `Response` object.
 
-        :param data: (optional) Dictionary, bytes, or file-like object
-            to send in the body of the :class:`Request`.
-        :param \*\*kwargs: Optional arguments that ``request`` takes.
-        '''
+        **Parameters**
+
+        * **data** - (optional) Dictionary, bytes, or file-like object
+        to send in the body of the `Request`.
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
+        """
 
         kwargs = self._update_kwargs(kwargs)
         return requests.put(url=self.url, data=data, **kwargs)
 
     def patch(self, data=None, **kwargs):
-        '''Sends a PATCH request. Returns :class:`Response` object.
+        """
+        Sends a PATCH request. Returns `Response` object.
 
-        :param data: (optional) Dictionary, bytes, or file-like object
-            to send in the body of the :class:`Request`.
-        :param \*\*kwargs: Optional arguments that ``request`` takes.
-        '''
+        **Parameters**
+
+        * **data** - (optional) Dictionary, bytes, or file-like object
+        to send in the body of the `Request`.
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
+        """
 
         kwargs = self._update_kwargs(kwargs)
         return requests.patch(url=self.url, data=data, **kwargs)
 
     def delete(self, **kwargs):
-        '''Sends a DELETE request. Returns :class:`Response` object.
+        """
+        Sends a DELETE request. Returns `Response` object.
 
-        :param \*\*kwargs: Optional arguments that ``request`` takes.
-        '''
+        **Parameters**
+
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
+        """
 
         kwargs = self._update_kwargs(kwargs)
         return requests.delete(url=self.url, **kwargs)
 
     def options(self, **kwargs):
-        '''Sends a OPTIONS request. Returns :class:`Response` object.
+        """
+        Sends a OPTIONS request. Returns `Response` object.
 
-        :param \*\*kwargs: Optional arguments that ``request`` takes.
-        '''
+        **Parameters**
+
+        * **\\*\\*kwargs** - (optional) Optional arguments that `request`
+        takes.
+        """
 
         kwargs = self._update_kwargs(kwargs)
         return requests.options(url=self.url, **kwargs)

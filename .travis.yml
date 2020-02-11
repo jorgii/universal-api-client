@@ -5,20 +5,21 @@ python:
   - 3.8
   - 3.7
   - 3.6
-  - 3.5
 
-# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox-travis
+stages:
+  - check
+  - test
 
-# Command to run tests, e.g. python setup.py test
-script: tox
+install:
+  - pip install -r requirements.txt pytest
 
-deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: ggoranov
-  password:
-    secure: $PYPI_PASSWORD
-  on:
-    tags: true
-    python: 3.8
+script:
+  - pytest
+
+jobs:
+  include:
+    - stage: check
+      name: Check with flake8
+      install: pip install flake8
+      script: flake8
+      python: 3.8

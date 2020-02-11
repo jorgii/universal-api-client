@@ -1,0 +1,24 @@
+site_name: Universal API Client
+site_description: The ultimate REST API client.
+site_url: https://universal-api-client.readthedocs.io/en/latest/
+
+theme:
+    name: 'material'
+
+repo_name: jorgii/universal-api-client
+repo_url: https://github.com/jorgii/universal-api-client
+edit_uri: ""
+
+markdown_extensions:
+    - admonition
+    - codehilite
+    - mkautodoc
+
+nav:
+    - Introduction: 'index.md'
+    - Reference: 'reference.md'
+    - Contributing: 'contributing.md'
+    - Authors: 'authors.md'
+
+extra_css:
+    - css/custom.css
