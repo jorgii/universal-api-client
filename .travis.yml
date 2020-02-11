@@ -17,18 +17,18 @@ install:
 script:
   - pytest
 
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: $PYPI_USER
+  password:
+    secure: $PYPI_PASSWORD
+  on:
+    tags: true
+
 jobs:
   include:
     - stage: check
       name: Check with flake8
       script: flake8
       python: 3.8
-    - stage: deploy
-      provider: pypi
-      distributions: sdist bdist_wheel
-      name: Deploy to pypi.org
-      user: $PYPI_USER
-      password:
-        secure: $PYPI_PASSWORD
-      # on:
-      #   tags: true
