@@ -17,19 +17,16 @@ class APIRequest(object):
         self.auth = auth
 
     def __getattr__(self, name):
-        updated_url = self._update_url(self.url, name)
+        updated_url = self._append_to_url(self.url, name)
         return APIRequest(updated_url)
 
     def __call__(self, identifier=None):
-        updated_url = self._update_url(
-            self.url, identifier=identifier)
+        updated_url = self._append_to_url(self.url, identifier)
         return APIRequest(updated_url)
 
-    def _update_url(self, url, identifier=None):
-        url_parts = list(parse.urlparse(url))
-        if identifier:
-            url_parts[2] = parse.urljoin(url_parts[2], str(identifier)) + '/'
-        return parse.urlunparse(url_parts)
+    def _append_to_url(self, base, name):
+        name = str(name) + '/'
+        return parse.urljoin(base, name)
 
     def _update_kwargs(self, kwargs):
         if 'auth' not in kwargs and self.auth:
