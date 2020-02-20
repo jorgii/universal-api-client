@@ -1,6 +1,8 @@
 .PHONY: clean clean-test clean-pyc clean-build docs help
 .DEFAULT_GOAL := help
 
+PYTHONPATH := $(shell echo "$$PWD")
+
 define BROWSER_PYSCRIPT
 import os, webbrowser, sys
 
@@ -57,7 +59,7 @@ test: ## run tests quickly with the default Python
 	pytest
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run --source universal_api_client setup.py test
+	coverage run --source universal_api_client -m pytest
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
@@ -65,7 +67,8 @@ coverage: ## check code coverage quickly with the default Python
 docs: ## generate docs
 	mkdocs build
 
-servedocs: docs ## compile the docs watching for changes
+servedocs: ## compile the docs watching for changes
+	echo "Python path is $$PYTHONPATH"
 	mkdocs serve
 
 releasedocs: dist ## package and upload docs
