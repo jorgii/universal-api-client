@@ -66,34 +66,34 @@ def test_url_multi_path_with_many_requests(request_instance, base_url):
 @patch('universal_api_client.request.requests')
 def test_get(mocked_requests, request_instance):
     params = {'foo': 'bar'}
-    request_instance.get(params=params)
+    request_instance.people(identifier=57812).get(params=params)
     mocked_requests.get.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         params=params)
 
 
 @patch('universal_api_client.request.requests')
 def test_get_with_auth(mocked_requests, request_instance, basic_auth):
-    request_instance.get(auth=basic_auth)
+    request_instance.people(identifier=57812).get(auth=basic_auth)
     mocked_requests.get.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         auth=basic_auth)
 
 
 @patch('universal_api_client.request.requests')
 def test_head(mocked_requests, request_instance):
     params = {'foo': 'bar'}
-    request_instance.head(params=params)
+    request_instance.people(identifier=57812).head(params=params)
     mocked_requests.head.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         params=params)
 
 
 @patch('universal_api_client.request.requests')
 def test_head_with_auth(mocked_requests, request_instance, basic_auth):
-    request_instance.head(auth=basic_auth)
+    request_instance.people(identifier=57812).head(auth=basic_auth)
     mocked_requests.head.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         auth=basic_auth)
 
 
@@ -101,18 +101,18 @@ def test_head_with_auth(mocked_requests, request_instance, basic_auth):
 def test_post(mocked_requests, request_instance):
     params = {'foo': 'bar'}
     data = {'one': 'two'}
-    request_instance.post(data=data, params=params)
+    request_instance.people(identifier=57812).post(data=data, params=params)
     mocked_requests.post.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         data=data,
         params=params)
 
 
 @patch('universal_api_client.request.requests')
 def test_post_with_auth(mocked_requests, request_instance, basic_auth):
-    request_instance.post(auth=basic_auth)
+    request_instance.people(identifier=57812).post(auth=basic_auth)
     mocked_requests.post.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         data=None,
         auth=basic_auth)
 
@@ -121,18 +121,18 @@ def test_post_with_auth(mocked_requests, request_instance, basic_auth):
 def test_put(mocked_requests, request_instance):
     params = {'foo': 'bar'}
     data = {'one': 'two'}
-    request_instance.put(data=data, params=params)
+    request_instance.people(identifier=57812).put(data=data, params=params)
     mocked_requests.put.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         data=data,
         params=params)
 
 
 @patch('universal_api_client.request.requests')
 def test_put_with_auth(mocked_requests, request_instance, basic_auth):
-    request_instance.put(auth=basic_auth)
+    request_instance.people(identifier=57812).put(auth=basic_auth)
     mocked_requests.put.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         data=None,
         auth=basic_auth)
 
@@ -141,18 +141,18 @@ def test_put_with_auth(mocked_requests, request_instance, basic_auth):
 def test_patch(mocked_requests, request_instance):
     params = {'foo': 'bar'}
     data = {'one': 'two'}
-    request_instance.patch(data=data, params=params)
+    request_instance.people(identifier=57812).patch(data=data, params=params)
     mocked_requests.patch.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         data=data,
         params=params)
 
 
 @patch('universal_api_client.request.requests')
 def test_patch_with_auth(mocked_requests, request_instance, basic_auth):
-    request_instance.patch(auth=basic_auth)
+    request_instance.people(identifier=57812).patch(auth=basic_auth)
     mocked_requests.patch.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         data=None,
         auth=basic_auth)
 
@@ -160,34 +160,34 @@ def test_patch_with_auth(mocked_requests, request_instance, basic_auth):
 @patch('universal_api_client.request.requests')
 def test_delete(mocked_requests, request_instance):
     params = {'foo': 'bar'}
-    request_instance.delete(params=params)
+    request_instance.people(identifier=57812).delete(params=params)
     mocked_requests.delete.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         params=params)
 
 
 @patch('universal_api_client.request.requests')
 def test_delete_with_auth(mocked_requests, request_instance, basic_auth):
-    request_instance.delete(auth=basic_auth)
+    request_instance.people(identifier=57812).delete(auth=basic_auth)
     mocked_requests.delete.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         auth=basic_auth)
 
 
 @patch('universal_api_client.request.requests')
 def test_options(mocked_requests, request_instance):
     params = {'foo': 'bar'}
-    request_instance.options(params=params)
+    request_instance.people(identifier=57812).options(params=params)
     mocked_requests.options.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         params=params)
 
 
 @patch('universal_api_client.request.requests')
 def test_options_with_auth(mocked_requests, request_instance, basic_auth):
-    request_instance.options(auth=basic_auth)
+    request_instance.people(identifier=57812).options(auth=basic_auth)
     mocked_requests.options.assert_called_once_with(
-        url=request_instance.url,
+        url='{}people/57812/'.format(request_instance.url),
         auth=basic_auth)
 
 

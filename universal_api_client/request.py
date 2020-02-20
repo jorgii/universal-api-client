@@ -21,14 +21,20 @@ class APIRequest(object):
 
     def __getattr__(self, name):
         updated_url = self._append_to_url(self.url, name, self.trailing_slash)
-        return APIRequest(url=updated_url, trailing_slash=self.trailing_slash)
+        return APIRequest(
+            url=updated_url,
+            auth=self.auth,
+            trailing_slash=self.trailing_slash)
 
     def __call__(self, identifier=None):
         updated_url = self._append_to_url(
             self.url,
             identifier,
             self.trailing_slash)
-        return APIRequest(url=updated_url, trailing_slash=self.trailing_slash)
+        return APIRequest(
+            url=updated_url,
+            auth=self.auth,
+            trailing_slash=self.trailing_slash)
 
     def _append_to_url(self, base, name, trailing_slash=True):
         name = str(name)
