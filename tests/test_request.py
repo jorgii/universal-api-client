@@ -162,6 +162,23 @@ def test_delete_with_auth(mocked_requests, request_instance, basic_auth):
         auth=basic_auth)
 
 
+@patch('universal_api_client.request.requests')
+def test_options(mocked_requests, request_instance):
+    params = {'foo': 'bar'}
+    request_instance.options(params=params)
+    mocked_requests.options.assert_called_once_with(
+        url=request_instance.url,
+        params=params)
+
+
+@patch('universal_api_client.request.requests')
+def test_options_with_auth(mocked_requests, request_instance, basic_auth):
+    request_instance.options(auth=basic_auth)
+    mocked_requests.options.assert_called_once_with(
+        url=request_instance.url,
+        auth=basic_auth)
+
+
 def test_update_kwargs_no_auth(request_instance):
     kwargs = request_instance._update_kwargs({})
     assert kwargs == {}
