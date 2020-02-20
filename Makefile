@@ -71,8 +71,8 @@ servedocs: ## compile the docs watching for changes
 	echo "Python path is $$PYTHONPATH"
 	mkdocs serve
 
-releasedocs: dist ## package and upload docs
-	twine upload site/*
+release: dist ## package and release to PYPI
+	twine upload dist/*
 
 dist: clean ## builds source and wheel package
 	python setup.py sdist
