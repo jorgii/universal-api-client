@@ -66,6 +66,18 @@ from requests.auth import HTTPBasicAuth
 swapi_client.request.people.get(auth=HTTPBasicAuth('user', 'pass'))
 ```
 
+### Trailing slash
+
+Some API urls require (or not) a trailing slash at the end of the URL. This can be controlled by the `trailing_slash` flag when creating the client:
+
+``` python
+from universal_api_client import Client
+swapi_client = Client(base_url='https://swapi.co/api/', trailing_slash=False)
+
+swapi_client.request.people(identifier='1').url # 'https://swapi.co/api/people/1'
+```
+
+
 ## Credits
 
 This package was created with

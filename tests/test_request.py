@@ -37,9 +37,21 @@ def test_url_single_path_with_identifier(request_instance, base_url):
         '{}people/57812/'.format(base_url)
 
 
+def test_url_single_path_with_identifier_no_trailing_slash(base_url):
+    request_instance = APIRequest(url=base_url, trailing_slash=False)
+    assert request_instance.people(identifier=57812).url == \
+        '{}people/57812'.format(base_url)
+
+
 def test_url_multi_path_with_identifier(request_instance, base_url):
     assert request_instance.people(identifier=57812).are('so').many.url == \
         '{}people/57812/are/so/many/'.format(base_url)
+
+
+def test_url_multi_path_no_trailing_slash(base_url):
+    request_instance = APIRequest(url=base_url, trailing_slash=False)
+    assert request_instance.people(identifier=57812).are('so').many.url == \
+        '{}people/57812/are/so/many'.format(base_url)
 
 
 def test_url_multi_path_with_many_requests(request_instance, base_url):

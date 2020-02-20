@@ -41,3 +41,10 @@ def test_multiple_client_request_calls(client, base_url):
         '{}people/'.format(base_url)
     assert client.request.people.url == \
         '{}people/'.format(base_url)
+
+
+def test_client_no_trailing_slash():
+    client = Client(
+        base_url='https://google.com/',
+        trailing_slash=False)
+    assert client.request.trailing_slash is False

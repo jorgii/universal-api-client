@@ -11,21 +11,31 @@ class APIRequest(object):
 
     * **url** - Url for the request.
     * **auth** - (optional) Authentication from the `requests.auth` package.
+    * **trailing_slash** - (optional) Flag to define whether to put
+    trailing slash at the end of the generated url.
     """
-    def __init__(self, url, auth=None):
+    def __init__(self, url, auth=None, trailing_slash=True):
         self.url = url
         self.auth = auth
+        self.trailing_slash = trailing_slash
 
     def __getattr__(self, name):
-        updated_url = self._append_to_url(self.url, name)
-        return APIRequest(updated_url)
+        updated_url = self._append_to_url(self.url, name, self.trailing_slash)
+        return APIRequest(url=updated_url, trailing_slash=self.trailing_slash)
 
     def __call__(self, identifier=None):
-        updated_url = self._append_to_url(self.url, identifier)
-        return APIRequest(updated_url)
+        updated_url = self._append_to_url(
+            self.url,
+            identifier,
+            self.trailing_slash)
+        return APIRequest(url=updated_url, trailing_slash=self.trailing_slash)
 
-    def _append_to_url(self, base, name):
-        name = str(name) + '/'
+    def _append_to_url(self, base, name, trailing_slash=True):
+        name = str(name)
+        if base[-1] != '/':
+            base = base + '/'
+        if trailing_slash:
+            name = name + '/'
         return parse.urljoin(base, name)
 
     def _update_kwargs(self, kwargs):
