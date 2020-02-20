@@ -45,6 +45,7 @@ class APIRequest(object):
         * **\\*\\*kwargs** - (optional) Optional arguments that `request`
         takes.
         """
+        kwargs = self._update_kwargs(kwargs)
         return requests.get(url=self.url, **kwargs)
 
     def head(self, **kwargs):
