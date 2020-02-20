@@ -1,7 +1,6 @@
 # Universal REST API Client
 
-[![Build
-Status](https://travis-ci.org/jorgii/universal-api-client.svg?branch=master)](https://travis-ci.org/jorgii/universal-api-client)
+[![Build Status](https://travis-ci.org/jorgii/universal-api-client.svg?branch=master)](https://travis-ci.org/jorgii/universal-api-client) [![codecov](https://codecov.io/gh/jorgii/universal-api-client/branch/master/graph/badge.svg)](https://codecov.io/gh/jorgii/universal-api-client) [![PyPI version](https://badge.fury.io/py/universal-api-client.svg)](https://badge.fury.io/py/universal-api-client)
 
   - Free software: MIT license
   - Documentation:
