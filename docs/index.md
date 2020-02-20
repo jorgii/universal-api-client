@@ -4,12 +4,14 @@ This library is a small REST API client with the following features:
 
   - Url builder - allows you to build a url by natively calling the
     client's attributes
-  - HTTP requests - a thin wrapper around the requests library that
+  - HTTP requests - a thin wrapper around the [requests](https://requests.readthedocs.io/) library that
     allows full control of the HTTP requests.
 
 ## Installation
 
-`pip install universal-api-client`
+```shell
+pip install universal-api-client
+```
 
 ## Usage
 
@@ -41,6 +43,27 @@ library.
 ``` python
 response = swapi_client.request.people(identifier='1').get() # <Response [200]>
 print(response.status_code) # 200
+```
+
+### Authentication
+
+The library allows the use of the requests authentication classes ([request.auth](https://requests.readthedocs.io/en/master/user/authentication/#authentication)).
+
+There are 2 ways to add authentication:
+
+1. When initializing the client.
+```python
+from requests.auth import HTTPBasicAuth
+
+swapi_client = Client(base_url='https://swapi.co/api/', auth=HTTPBasicAuth('user', 'pass'))
+```
+
+2. When performing the request (overrides the authentication set in the client).
+
+```python
+from requests.auth import HTTPBasicAuth
+
+swapi_client.request.people.get(auth=HTTPBasicAuth('user', 'pass'))
 ```
 
 ## Credits
