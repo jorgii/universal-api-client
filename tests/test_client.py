@@ -1,5 +1,7 @@
 import pytest
 
+from requests.auth import HTTPBasicAuth
+
 from universal_api_client.client import Client
 from universal_api_client.request import APIRequest
 
@@ -18,6 +20,14 @@ def client(base_url):
 def test_base_url():
     client = Client(base_url='https://google.com/')
     assert client.base_url == 'https://google.com/'
+
+
+def test_auth():
+    auth = HTTPBasicAuth('user', 'pass')
+    client = Client(
+        base_url='https://google.com/',
+        auth=auth)
+    assert client.auth == auth
 
 
 def test_generate_request(client):

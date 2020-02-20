@@ -2,12 +2,19 @@ from unittest.mock import patch
 
 import pytest
 
+from requests.auth import HTTPBasicAuth
+
 from universal_api_client.request import APIRequest
 
 
 @pytest.fixture
 def base_url():
     return 'https://swapi.co/api/'
+
+
+@pytest.fixture
+def basic_auth():
+    return HTTPBasicAuth('user', 'pass')
 
 
 @pytest.fixture
@@ -54,12 +61,28 @@ def test_get(mocked_requests, request_instance):
 
 
 @patch('universal_api_client.request.requests')
+def test_get_with_auth(mocked_requests, request_instance, basic_auth):
+    request_instance.get(auth=basic_auth)
+    mocked_requests.get.assert_called_once_with(
+        url=request_instance.url,
+        auth=basic_auth)
+
+
+@patch('universal_api_client.request.requests')
 def test_head(mocked_requests, request_instance):
     params = {'foo': 'bar'}
     request_instance.head(params=params)
     mocked_requests.head.assert_called_once_with(
         url=request_instance.url,
         params=params)
+
+
+@patch('universal_api_client.request.requests')
+def test_head_with_auth(mocked_requests, request_instance, basic_auth):
+    request_instance.head(auth=basic_auth)
+    mocked_requests.head.assert_called_once_with(
+        url=request_instance.url,
+        auth=basic_auth)
 
 
 @patch('universal_api_client.request.requests')
@@ -74,6 +97,15 @@ def test_post(mocked_requests, request_instance):
 
 
 @patch('universal_api_client.request.requests')
+def test_post_with_auth(mocked_requests, request_instance, basic_auth):
+    request_instance.post(auth=basic_auth)
+    mocked_requests.post.assert_called_once_with(
+        url=request_instance.url,
+        data=None,
+        auth=basic_auth)
+
+
+@patch('universal_api_client.request.requests')
 def test_put(mocked_requests, request_instance):
     params = {'foo': 'bar'}
     data = {'one': 'two'}
@@ -82,6 +114,15 @@ def test_put(mocked_requests, request_instance):
         url=request_instance.url,
         data=data,
         params=params)
+
+
+@patch('universal_api_client.request.requests')
+def test_put_with_auth(mocked_requests, request_instance, basic_auth):
+    request_instance.put(auth=basic_auth)
+    mocked_requests.put.assert_called_once_with(
+        url=request_instance.url,
+        data=None,
+        auth=basic_auth)
 
 
 @patch('universal_api_client.request.requests')
@@ -96,9 +137,48 @@ def test_patch(mocked_requests, request_instance):
 
 
 @patch('universal_api_client.request.requests')
+def test_patch_with_auth(mocked_requests, request_instance, basic_auth):
+    request_instance.patch(auth=basic_auth)
+    mocked_requests.patch.assert_called_once_with(
+        url=request_instance.url,
+        data=None,
+        auth=basic_auth)
+
+
+@patch('universal_api_client.request.requests')
 def test_delete(mocked_requests, request_instance):
     params = {'foo': 'bar'}
     request_instance.delete(params=params)
     mocked_requests.delete.assert_called_once_with(
         url=request_instance.url,
         params=params)
+
+
+@patch('universal_api_client.request.requests')
+def test_delete_with_auth(mocked_requests, request_instance, basic_auth):
+    request_instance.delete(auth=basic_auth)
+    mocked_requests.delete.assert_called_once_with(
+        url=request_instance.url,
+        auth=basic_auth)
+
+
+def test_update_kwargs_no_auth(request_instance):
+    kwargs = request_instance._update_kwargs({})
+    assert kwargs == {}
+
+
+def test_update_kwargs_auth_in_kwargs(request_instance):
+    kwargs = request_instance._update_kwargs({'auth': 'foo'})
+    assert kwargs == {'auth': 'foo'}
+
+
+def test_update_kwargs_auth_in_instance(request_instance):
+    request_instance.auth = 'foo'
+    kwargs = request_instance._update_kwargs({})
+    assert kwargs == {'auth': 'foo'}
+
+
+def test_update_kwargs_auth_in_instance_and_kwargs(request_instance):
+    request_instance.auth = 'foo'
+    kwargs = request_instance._update_kwargs({'auth': 'bar'})
+    assert kwargs == {'auth': 'bar'}
